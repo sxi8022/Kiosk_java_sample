@@ -4,6 +4,7 @@ import util.DuplicationUtil;
 
 import java.util.ArrayList;
 
+// 주문 상품(장바구니)
 public class OrderProduct extends Menu implements Order{
     // 가격
     public double Price;
@@ -42,7 +43,7 @@ public class OrderProduct extends Menu implements Order{
                 System.out.println(
                         (i+1)
                                 + ". "
-                                +  String.format("%-10s", finalList.get(i).Name)
+                                +  String.format("%-25s", finalList.get(i).Name)
                                 + " | "
                                 +  String.format("%-4s", finalList.get(i).Price)
                                 + " | "

@@ -4,7 +4,7 @@ import util.DuplicationUtil;
 
 import java.util.ArrayList;
 
-//구매한 상품
+//구매(주문)한 상품
 public class Purchase extends Menu implements Order{
     // 가격
     public double Price;
@@ -28,7 +28,7 @@ public class Purchase extends Menu implements Order{
             totalPrice += pc.Price;
             System.out.println(
                             "- "
-                            +  String.format("%-10s", pc.Name)
+                            +  String.format("%-25s", pc.Name)
                             + " | "
                             +  "W " + String.format("%-4s", pc.Price)
             );

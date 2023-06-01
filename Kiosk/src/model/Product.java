@@ -2,8 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
+// 상품
 public class Product extends Menu implements Order{
 
+    // 가격
     public double Price;
 
 
@@ -15,7 +17,7 @@ public class Product extends Menu implements Order{
             System.out.println(
                     (i+1)
                             + ". "
-                            +  String.format("%-10s", pd.Name)
+                            +  String.format("%-25s", pd.Name)
                             + " | "
                             +  String.format("%-4s", pd.Price)
                             + " | "

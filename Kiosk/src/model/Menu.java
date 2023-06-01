@@ -1,5 +1,6 @@
 package model;
 
+// 메뉴
 public class Menu {
 
     // 메뉴번호
