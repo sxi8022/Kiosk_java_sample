@@ -7,8 +7,8 @@ public class Product extends Menu implements Order{
 
     // 가격
     public double Price;
-
-
+    
+    // 상품 메뉴 표시
     @Override
     public void printMenu(ArrayList<? extends Menu> array) {
 

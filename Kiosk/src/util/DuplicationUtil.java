@@ -8,6 +8,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+// 리스트 중복체크 클래스
 public class DuplicationUtil
 {
     /*

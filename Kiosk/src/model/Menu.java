@@ -7,7 +7,7 @@ public class Menu {
     public int MenuNo = 0;
     // 메뉴명
     public String Name = "";
-    // 메뉴명
+    // 설명
     public String Desc = "";
 
     // get, set 함수

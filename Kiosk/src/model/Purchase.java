@@ -8,12 +8,8 @@ import java.util.ArrayList;
 public class Purchase extends Menu implements Order{
     // 가격
     public double Price;
-    // 개수
-    public int Amount;
 
-
-
-
+    // 구매 완료한 상품 표시
     @Override
     public void printMenu(ArrayList<? extends Menu> array) {
         ArrayList<Purchase> bucketList = new ArrayList<>();

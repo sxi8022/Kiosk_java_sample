@@ -6,6 +6,18 @@ import java.util.concurrent.TimeUnit;
 
 // 키오스크에서 메뉴 표시 저장 등 기본적인 기능을 수행
 public class Kiosk {
+    private static Kiosk instance;
+    public static Kiosk getInstance() {
+        if (instance == null) {
+            //instance가 null인 경우 synchronized 블록 접근
+            synchronized (Kiosk.class) {
+                if (instance == null) {
+                    instance = new Kiosk();
+                }
+            }
+        }
+        return instance;
+    }
 
     public static ArrayList<Category> cg; //햄버거, 드링크 등 대형 카테고리
     public static ArrayList<OrderType> og; // 주문, 취소
@@ -29,7 +41,9 @@ public class Kiosk {
     public void displayMenu() {
         System.out.println("SHAKESHACK BURGER 에 오신걸 환영합니다.");
         System.out.println("아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.");
-
+        System.out.println();
+        System.out.println("[ SHAKESHACK MENU ]");
+        //메인메뉴
         for(int i = 0 ; i < cg.size(); i ++) {
             System.out.println(
                     cg.get(i).MenuNo
@@ -38,7 +52,9 @@ public class Kiosk {
                             + " | "
                             + cg.get(i).Desc);
         }
-
+        System.out.println();
+        System.out.println("[ ORDER MENU ]");
+        //주문방법 주문, 취소
         for(int i = 0 ; i < og.size(); i ++) {
             System.out.println(
                     og.get(i).MenuNo
@@ -286,17 +302,11 @@ public class Kiosk {
                 bucket.add(op);
                 System.out.println(pg.get(selectNo-1).Name + "가 장바구니에 추가되었습니다.");
                 System.out.println("메뉴판으로 돌아갑니다.");
-                displayMenu();
-                selectMenu();
             }  else if (decideNo == 2) {
                 System.out.println("취소하고 이전메뉴로 이동합니다.");
-                displayMenu();
-                selectMenu();
             }
         } else if (selectNo == (pg.size()+1)) {
             System.out.println("취소하고 이전메뉴로 이동합니다.");
-            displayMenu();
-            selectMenu();
         } else {
             System.exit(0);
         }
@@ -363,8 +373,6 @@ public class Kiosk {
             bucket.clear();
             System.out.println("진행하던 주문이 취소되었습니다.");
         }
-        displayMenu();
-        selectMenu();
     }
 
     // 제품 주문
@@ -385,8 +393,6 @@ public class Kiosk {
 
             if (totalPrice <= 0) {
                 System.out.println("주문한상품이 없습니다. 이전 메뉴로 이동합니다.");
-                displayMenu();
-                selectMenu();
                 return;
             }
 
@@ -396,16 +402,12 @@ public class Kiosk {
             try {
                 bucket.clear();
                 TimeUnit.SECONDS.sleep(3);
-                displayMenu();
-                selectMenu();
             } catch(Exception e) {
                 System.out.println(e);
                 System.exit(-1);
             }
         } else if (selectNo == 2) {
             System.out.println("취소하고 이전메뉴로 이동합니다.");
-            displayMenu();
-            selectMenu();
         } else {
             System.exit(0);
         }
@@ -418,8 +420,6 @@ public class Kiosk {
         int selectNo = sc.nextInt();
         if (selectNo == 1) {
             System.out.println("이전메뉴로 이동합니다.");
-            displayMenu();
-            selectMenu();
         }
     }
 
