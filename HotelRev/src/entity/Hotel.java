@@ -85,10 +85,12 @@ public class Hotel {
             Reservation nowRev = reservations.get(key);
             if (nowRev.getName().equals(name) && nowRev.getPhoneNum().equals(phoneNum)) {
                 System.out.println(
-                        String.format(" 예약번호 : %s | Room번호: %s | 예약자: %s"
+                        String.format(" 예약번호 : %s | Room번호: %s | 예약자: %s | 연락처: %s | 예약일시: %s "
                                 , key
                                 , nowRev.getRoom().getRoom_id()
-                                , nowRev.getName())
+                                , nowRev.getName()
+                                , nowRev.getPhoneNum()
+                                , nowRev.getDate())
                 );
             }
             // reservations.get(key).getReservedInfo();

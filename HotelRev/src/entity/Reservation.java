@@ -39,6 +39,6 @@ public class Reservation {
     }
 
     public String getReservedInfo(){
-        return String.format("룸id: %s | 방크기: %s | 가격: %s | 이름: %s | 전화번호: %s | 예약일시: %s", room.getRoom_id(), room.getSize(), room.getPrice(), name, phoneNum, date);
+        return String.format("Room_id: %s | Room_size: %s | Room_price: %s | Name: %s | Phone_number: %s | Reserved_date: %s", room.getRoom_id(), room.getSize(), room.getPrice(), name, phoneNum, date);
     }
 }
