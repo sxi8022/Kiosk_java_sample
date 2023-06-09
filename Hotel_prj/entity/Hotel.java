@@ -72,6 +72,11 @@ public class Hotel {
         return roomList;
     }
 
+    // 호텔 예약추가
+    public void addReservation(String uuid, Reservation reservation){
+        reservations.put(uuid, reservation);
+    }
+
     // 1. 예약하기 -- 객실 예약 확정 (구현)
     public void bookRoom(Room room) {
         // 객실의 상태를 '사용중(true)'로 변경

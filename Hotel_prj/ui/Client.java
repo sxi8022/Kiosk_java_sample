@@ -21,37 +21,35 @@ public class Client {
     }
 
     public void init() {
-        while(true){
-            Customer customer = registerCustomer();
+        Customer customer = registerCustomer();
 
-            System.out.println("-----------------------");
-            boolean login = true;
-            while(login) {
-                int choice = displayOptions();
-                switch(choice){
-                    // 예약하기
-                    case 1:
-                        makeReservation(customer);
-                        break;
+        System.out.println("-----------------------");
+        boolean login = true;
+        while(login) {
+            int choice = displayOptions();
+            switch(choice){
+                // 예약하기
+                case 1:
+                    makeReservation(customer);
+                    break;
 
-                    // 예약 확인
-                    case 2:
-                        checkReservation(customer);
-                        break;
+                // 예약 확인
+                case 2:
+                    checkReservation(customer);
+                    break;
 
-                    // 예약 취소
-                    case 3:
-                        cancelReservation(customer);
-                        break;
+                // 예약 취소
+                case 3:
+                    cancelReservation(customer);
+                    break;
 
-                    // 나가기
-                    case 4:
-                        login = false;
-                        break;
-                }
+                // 나가기
+                case 4:
+                    login = false;
+                    break;
             }
-            System.out.println("-----------------------");
         }
+        System.out.println("-----------------------");
     }
 
     public Customer registerCustomer(){
@@ -142,9 +140,11 @@ public class Client {
         String uuid = UUID.randomUUID().toString();
 
         // Reservation 인스턴스 생성 (구현) -- new Reservation()
+        Reservation rev = new Reservation(room, customer.getName(), customer.getPhoneNum());
         // Hotel 예약 목록에 추가 (구현)    -- hotel.addReservation(...)
+        hotel.addReservation(uuid, rev);
         // Customer 예약 목록에 추가 (구현) -- customer.addReservation(...)
-
+        customer.addReservation(uuid, rev);
         // v)예약 완료 메시지 출력
         System.out.println("-----------------------");
         System.out.println("예약이 완료되었습니다!");
@@ -160,14 +160,20 @@ public class Client {
         HashMap<String, Reservation> reservations = customer.getReservations();
 
         // 예약 번호(id) 입력 받기
-        String uuid = getUUID(reservations);
-        if(uuid.equals("0")) return;
+        //String uuid = getUUID(reservations);
+        //if(uuid.equals("0")) return;
 
         // 고객의 예약 목록(reservations)에서 해당 예약 정보(Reservation)를 불러오기
-        Reservation reservation = reservations.get(uuid);
+        //Reservation reservation = reservations.get(uuid);
 
         // 불러온 예약 정보 출력하기
-        printReservation(reservation);
+        printReservation(reservations);
+    }
+
+    public void printReservation(HashMap<String, Reservation> reservations) {
+        for (String key : reservations.keySet()) {
+            System.out.println(reservations.get(key).toString());
+        }
     }
 
     // 3. 예약 취소하기 (구현)
